@@ -4,6 +4,10 @@ import model.IProduct;
 import model.Order;
 import model.Product;
 import service.ProductService;
+import strategy.CreditCardPayment;
+import strategy.Payment;
+import strategy.decorator.DiscountDecorator;
+import strategy.decorator.ProcessingFeeDecorator;
 import view.IProductViewer;
 import view.IProductViewerFactory;
 import view.ProductViewerFactory;
@@ -54,5 +58,14 @@ public class Main {
                         )
                 );
         System.out.println("Product price: " + DecimalFormat.getCurrencyInstance(Locale.forLanguageTag("vi-VN")).format(product.price()));
+
+        // Strategy + Decorator
+        Payment payment = new DiscountDecorator(
+                new ProcessingFeeDecorator(
+                        new CreditCardPayment()
+                )
+        );
+        double finalAmount = payment.pay(100_000);
+        System.out.println("Final payment amount: " + DecimalFormat.getCurrencyInstance(Locale.forLanguageTag("vi-VN")).format(finalAmount));
     }
 }
