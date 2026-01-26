@@ -11,8 +11,8 @@ public class VietnameseModernProductViewer implements IProductViewer {
     public void render(List<Product> allProducts) {
         System.out.println("Product ID\t| Product Name\t| Price");
         for (Product product : allProducts) {
-            var price = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("vi-VN")).format(product.getPrice());
-            System.out.println(product.getProductId() + "\t\t| " + product.getName() + "\t\t| " + price);
+            var price = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("vi-VN")).format(product.price());
+            System.out.println(product.productId() + "\t\t| " + product.name() + "\t\t| " + price);
         }
     }
 }

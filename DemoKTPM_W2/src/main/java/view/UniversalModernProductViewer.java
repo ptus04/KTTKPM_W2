@@ -9,7 +9,7 @@ public class UniversalModernProductViewer implements IProductViewer {
     public void render(List<Product> allProducts) {
         System.out.println("Product ID\t| Product Name\t| Price");
         for (Product product : allProducts) {
-            System.out.println(product.getProductId() + "\t\t| " + product.getName() + "\t\t| " + product.getPrice());
+            System.out.println(product.productId() + "\t\t| " + product.name() + "\t\t| " + product.price());
         }
     }
 }
